@@ -11,10 +11,11 @@ df_heart.describe()
 df_heart = pd.get_dummies(df_heart, columns = ['famhist'], drop_first=True)
 
 # Set random seed
-seed = 101
+seed = 12345
+
 # Split into train and test sections
 y = df_heart.pop('chd')
-X_train, X_test, y_train, y_test = train_test_split(df_heart, y, test_size=0.3, random_state=seed)
+X_train, X_test, y_train, y_test = train_test_split(df_heart, y, test_size=0.25, random_state=seed)
 
 # Build logistic regression model
 model = LogisticRegression(solver='liblinear', random_state=0).fit(X_train, y_train)
